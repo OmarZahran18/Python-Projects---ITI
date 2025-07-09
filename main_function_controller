@@ -1,1 +1,205 @@
+def task_menu():
+ def counter_vowels():
+    T = "My Name Is Omar Zahran"
+    v = "aeiouAEIOU" 
+    counter = 0
+    for i in T:
+        if i in v:
+            counter += 1
+    print(counter)
 
+ counter_vowels()
+
+
+def location_of_i ():
+    T = "My Name is Omar Zahran"
+    for i in range(len(T)):
+     if T[i] == 'i':
+        print(i)
+
+location_of_i()
+
+
+def mamultiplication_table ():
+   x = input("enter num")
+   x = int(x)
+   for i in range(1,6):
+    for k in range(1 , i + 1):
+        print(f" {i} * {k} ={i*k}")
+        
+mamultiplication_table()
+
+
+def mario_pyramid():
+ for m in range (1 , 6 , +1):
+  print("*" * m)
+    
+mario_pyramid()
+
+
+def sorted_array():
+    numbers = []
+    for i in range(5):
+        num = int(input("Enter a value: "))
+        numbers.append(num)
+
+    print("Original:", numbers)
+    print("Ascending:", sorted(numbers))
+    print("Descending:", sorted(numbers, reverse=True))
+
+sorted_array()
+
+
+def generate_a_multiplication_table():
+ x = int(input("Enter Num"))
+ l = []
+ for i in range (1, x + 1):
+    temp = []
+    for y in range (1, i + 1):
+            temp.append(i * y)
+            l.append(temp)
+    print(l)
+
+generate_a_multiplication_table()
+
+
+def get_user_data():
+    while True:
+        name = input("Enter your name: ").strip()
+        if name.isalpha():
+            break
+        else:
+            print("Invalid name. Please enter letters only.")
+
+    email = input("Enter your email: ").strip()
+
+    print("\nYour data:")
+    print("Name:", name)
+    print("Email:", email)
+
+get_user_data()
+
+
+def right_aligned_pyramid():
+    x = 5
+    for i in range(1, x + 1):
+        r = [" "] * (x - i) + ["#"] * i
+        print(r)
+
+right_aligned_pyramid()
+
+
+def extract_domains():
+    emails = [
+        "ali@gmail.com",
+        "sara@yahoo.com",
+        "mohamed@outlook.com",
+        "noha@iti.gov.eg"
+    ]
+
+    part_of_emails = map(lambda E: E.split('@')[1], emails)
+    print(list(part_of_emails))
+
+extract_domains()
+
+
+def filter_valid_emails():
+    domines = [
+        "ali@gmail.com",
+        "sara@yahoo.com",
+        "mohamed@outlook.com",
+        "omar@",
+        "zahran.yahoo@com",
+        "ahmed.com@gmail",
+        "sayed@outlookcom",
+        "khaled hotmail@"
+    ]
+
+    valid_emails = filter(
+        lambda e: 
+            "@" in e and 
+            "." in e.split("@")[-1] and 
+            e[0] != "@" and 
+            e[-1] != "@",
+        domines
+    )
+
+    print(list(valid_emails))
+
+filter_valid_emails()
+
+
+def check_user_login():
+    users = [
+        {"name": "omar", "pass": "123"},
+        {"name": "ahmed", "pass": "456"}
+    ]
+
+    name = input("Enter your name: ").lower()
+    password = input("Enter your password: ")
+
+    for i in users:
+        if i["name"] == name and i["pass"] == password:
+            print("Valid")
+            break
+    else:
+        print("Invalid")
+
+check_user_login()
+
+
+def validate_email(email):
+    if "@" in email and ".com" in email:
+        if email[0] != "@" and email[-1] != "@":
+            i = email.split("@")
+            if len (i) == 2 and i[1].count(".") <=1 and i[1].split(".")[0] != "":
+                if email[-4:] == ".com":
+                 return True
+    return False
+
+while True:
+    name = input("Enter ur name: ").strip()
+    if name.isalpha():
+        break
+    else:
+        print("Invalid name")
+
+email = input("Enter ur email: ").strip()
+while not validate_email(email):
+    print("Invalid email")
+    email = input("Enter ur email: ").strip()
+
+print("\nYour Data:")
+print("Name:", name)
+print("Email:", email)
+
+validate_email(email)
+
+
+def email_validator(email):
+    if "@" in email and ".com" in email:
+        if email[0] != "@" and email[-1] != "@" and email[-4:] == ".com":
+            s = email.split("@")
+            if len(s) == 2 and s[1].count(".") <= 1 and s[1].split(".")[0] != "":
+                return True
+    return False
+
+
+def check_email_attempts():
+    for i in range(5):
+        try:
+            email = input("Enter your Email: ").strip()
+            if email_validator(email):
+                print(" Valid Email")
+                break
+            else:
+                raise ValueError("Invalid Email")
+        except ValueError as e:
+            print(e)
+    else:
+        print("Too many failed attempts. Try again later.")
+        
+email_validator(email)
+check_email_attempts()
+
+task_menu()
